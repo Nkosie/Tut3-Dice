@@ -22,10 +22,13 @@ public:
 
 		return RolledNum;
 	}
+
 	float avarege(int num)
 	{
-		cout << "Sum of rolled numbers: " << SumRlld << endl<<endl << endl;
-		return (SumRlld / num);
+		
+		cout << "Sum of rolled numbers: " << SumRlld << endl;
+		float Avrg = SumRlld / num;
+		return Avrg;
 	}
 
 };
@@ -41,9 +44,8 @@ int main()
 
 	for (int i = 0; i < num; i++)
 	{
-		
 		cout << "Rolled number: " << myDice.roll() << endl;
-		myDice.avarege(num);
 	}
+	
 	cout << "Avarege rolled numbers: " << myDice.avarege(num) << endl;
 }
