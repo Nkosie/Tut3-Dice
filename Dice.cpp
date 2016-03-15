@@ -7,7 +7,7 @@ using namespace std;
 class Dice
 {
 	int	RolledNum;
-	int SumRlld;
+	float SumRlld;
 
 public:
 	Dice()
@@ -23,14 +23,27 @@ public:
 		return RolledNum;
 	}
 
-	float avarege(int num)
+	float avarege(Dice inDice, int num)
 	{
-		
-		cout << "Sum of rolled numbers: " << SumRlld << endl;
-		float Avrg = SumRlld / num;
+		float Avrg = 0.0;
+		cout << "Sum of rolled numbers: " << SumRlld<<endl;
+		Avrg = SumRlld / num;
 		return Avrg;
 	}
 
+	float avarege(int Arr[100], int num)
+	{
+		float Avg=0;
+		for (int i = 0; i < num; i++)
+		{
+			Avg += Arr[i];
+		}
+
+		cout << "Sum of array rolled numbers: " << Avg << endl;
+		Avg = Avg / num;
+
+		return Avg;
+	}
 };
  
 int main()
@@ -38,14 +51,23 @@ int main()
 	Dice myDice;
 	srand(static_cast<unsigned int>(time(0)));
 
-	int num;
+	int num=0;
+	int Arr[100] = { 0 };
+
 	cout << "Enter number of rolls u want:  ";
 	cin >> num;
 
 	for (int i = 0; i < num; i++)
 	{
-		cout << "Rolled number: " << myDice.roll() << endl;
+		cout << "Rolled number: " << myDice.roll() << endl;		
 	}
-	
-	cout << "Avarege rolled numbers: " << myDice.avarege(num) << endl;
+	cout << "Avarege rolled numbers: " << myDice.avarege(myDice, num) <<endl<< endl;
+
+
+	for (int i = 0; i < num; i++)
+	{
+		Arr[i] = myDice.roll();
+		cout <<"Rolled to an Array: "<< Arr[i] << endl;
+	}
+	cout << "Avarege rolled numbers: " << myDice.avarege( Arr, num) <<endl<< endl;
 }
